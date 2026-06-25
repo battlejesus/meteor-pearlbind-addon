@@ -20,8 +20,8 @@ public class PearlBind extends Module {
 
     public final Setting<Keybind> pearlKey = sgGeneral.add(new KeybindSetting.Builder()
         .name("pearl-key")
-        .description("Otomatik Ender Pearl fırlatmak için tuş atayın.")
-        .defaultValue(Keybind.fromKey(67)) // C tuşu
+        .description("Set the key to automatically throw Ender Pearls.")
+        .defaultValue(Keybind.fromKey(67)) // C key
         .build()
     );
 
@@ -29,7 +29,7 @@ public class PearlBind extends Module {
 
     public PearlBind() {
         /*super(PearlBindAddon.CATEGORY, "pearl-bind", "Tuşa basıldığında hotbardaki Ender Pearl'ü otomatik fırlatır.");*/
-        super(Categories.Player, "pearl-bind", "Tuşa basıldığında hotbardaki Ender Pearl'ü otomatik fırlatır.");
+        super(Categories.Player, "pearl-bind", "When the button is pressed, it automatically throws the Ender Pearl from the hotbar.");
     }
 
     @EventHandler
@@ -49,7 +49,7 @@ public class PearlBind extends Module {
         FindItemResult pearl = InvUtils.findInHotbar(Items.ENDER_PEARL);
 
         if (!pearl.found()) {
-            warning("Hotbarda Ender Pearl bulunamadı.");
+            warning("Ender Pearl not found in the hotbar.");
             return;
         }
 
