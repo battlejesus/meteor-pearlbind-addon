@@ -1,3 +1,5 @@
+# This is a open source addon for Meteor Client.
+
 You can bind a key for pearl.
 You need to pearl in hotbar
 
