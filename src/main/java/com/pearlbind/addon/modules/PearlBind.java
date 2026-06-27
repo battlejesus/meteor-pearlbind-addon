@@ -10,8 +10,8 @@ import meteordevelopment.meteorclient.utils.misc.Keybind;
 import meteordevelopment.meteorclient.utils.player.FindItemResult;
 import meteordevelopment.meteorclient.utils.player.InvUtils;
 import meteordevelopment.orbit.EventHandler;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.item.Items;
+import net.minecraft.util.Hand;
+import net.minecraft.item.Items;
 import meteordevelopment.meteorclient.systems.modules.Categories;
 
 public class PearlBind extends Module {
@@ -44,7 +44,7 @@ public class PearlBind extends Module {
     }
 
     private void throwPearl() {
-        if (mc.player == null || mc.gameMode == null) return;
+        if (mc.player == null || mc.interactionManager == null) return;
 
         FindItemResult pearl = InvUtils.findInHotbar(Items.ENDER_PEARL);
 
@@ -57,7 +57,7 @@ public class PearlBind extends Module {
         InvUtils.swap(pearl.slot(), true);
         
         // Eşyayı kullan (Fırlat)
-        mc.gameMode.useItem(mc.player, InteractionHand.MAIN_HAND);
+        mc.interactionManager.interactItem(mc.player, Hand.MAIN_HAND);
         
         // İşlem bittiğinde hafızadaki orijinal slota otomatik olarak geri dön
         InvUtils.swapBack();
